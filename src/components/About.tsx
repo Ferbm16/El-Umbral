@@ -42,7 +42,7 @@ export default function About() {
           </motion.div>
           <motion.h2 
             className="font-serif text-4xl md:text-5xl text-white mb-8 hover-glitch transition-colors"
-            initial={{ opacity: 0, py: 30 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: [0, -5, 0] }}
             viewport={{ once: true }}
             transition={{ 
