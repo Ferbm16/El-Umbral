@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-coal: #050505;
+  --color-ash: #1a1a1a;
+  --color-blood: #8b0000;
+  --color-blood-hover: #b30000;
+  --color-crimson-glow: #ff0f0f;
+  --color-phantom-blue: #0a1128;
+  --color-phantom-glow: #1e3a8a;
+  --color-toxic-green: #0d2818;
+  --color-void: #000000;
+  
+  --font-serif: var(--font-crimson);
+  --font-sans: var(--font-inter);
+}
+
+:root {
+  --background: #000000;
+  --foreground: #f3f4f6;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes breathe-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.03); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; text-shadow: 0 0 15px var(--color-crimson-glow); }
+  41% { opacity: 1; text-shadow: 0 0 15px var(--color-crimson-glow); }
+  42% { opacity: 0.3; text-shadow: none; }
+  43% { opacity: 1; text-shadow: 0 0 15px var(--color-crimson-glow); }
+  60% { opacity: 1; }
+  61% { opacity: 0.5; text-shadow: 0 0 5px var(--color-blood); }
+  62% { opacity: 1; text-shadow: 0 0 15px var(--color-crimson-glow); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+
+.hover-glitch:hover {
+  animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+  color: var(--color-crimson-glow);
+  text-shadow: 3px 0 var(--color-blood), -3px 0 var(--color-phantom-glow);
+}
+
+.animate-breathe {
+  animation: breathe-glow 6s ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: flicker 4s infinite;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ash);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blood);
+  box-shadow: 0 0 10px var(--color-crimson-glow);
+}
